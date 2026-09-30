@@ -1,5 +1,112 @@
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-
-
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+</head>
+<body>
+    <header>
+        <h1>Gustavo Maia da Silva</h1>
+        <h2>Desenvolvedor Web em formação</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Sobre mim</a></li>
+                <li><a href="curriculo.html">Curriculo</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h3>Fale comigo</h3>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Dados pessoais</legend>
+                    <label for="nome_completo">Nome completo:</label>
+                    <br>
+                    <input type="text" id="nome_completo" name="nome_completo" minlength="3" required>
+                    <br><br>
+                    <label for="email">Email:</label>
+                    <br>
+                    <input type="email" id="email" name="email" required>
+                    <br><br>
+                    <label for="telefone">Telefone:</label>
+                    <br>
+                    <input type="tel" id="telefone" name="telefone">
+                    <br><br>
+                    <label for="data_nascimento">Data de nascimento:</label>
+                    <br>
+                    <input type="date" id="data_nascimento" name="data_nascimento">
+                </fieldset>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <label for="CEP">CEP:</label>
+                    <br>
+                    <input type="text" id="CEP" name="CEP" pattern="[0-9]{8}" placeholder="Somente números" title="Digite exatamente 8 dígitos numéricos, sem pontos ou hífen." required>
+                    <br><br>
+                    <label for="Rua">Rua:</label>
+                    <br>
+                    <input type="text" id="Rua" name="Rua">
+                    <br><br>
+                    <label for="Numero">Número:</label>
+                    <br>
+                    <input type="number" id="Numero" name="Numero" min="1" max="99999">
+                    <br><br>
+                    <label for="Cidade">Cidade:</label>
+                    <br>
+                    <input type="text" id="Cidade" name="Cidade">
+                    <br><br>
+                    <label for="Estado">Estado:</label>
+                    <br>
+                    <select id="Estado" name="Estado">
+                        <option value="PR" selected>Paraná</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <legend>Interesse</legend>
+                    <label for="area_interesse">Área de interesse:</label>
+                    <br>
+                    <select id="area_interesse" name="Área_interesse" required>
+                        <option value="">Selecione uma área</option>
+                        <option value="Front-end">Front-end</option>
+                        <option value="Back-end">Back-end</option>
+                        <option value="Banco-de-dados">Banco de Dados</option>
+                        <option value="Full-stack">Full stack</option>
+                    </select>
+                    <br><br>
+                    <span>Nível de experiência:</span>
+                    <br>
+                    <input type="radio" id="iniciante" name="Nível_experiencia" value="Iniciante">
+                    <label for="iniciante">Iniciante</label>
+                    <br>
+                    <input type="radio" id="intermediario" name="Nível_experiencia" value="Intermediário">
+                    <label for="intermediario">Intermediário</label>
+                    <br>
+                    <input type="radio" id="avancado" name="Nível_experiencia" value="Avançado">
+                    <label for="avancado">Avançado</label>
+                    <br><br>
+                    <label for="mensagem">Mensagem:</label>
+                    <br>
+                    <textarea id="mensagem" name="mensagem" rows="5" maxlength="500"></textarea>
+                    <br><br>
+                    <input type="checkbox" name="aceito" id="aceito" required>
+                    <label for="aceito">Li e aceito os termos de uso</label>
+                    <br><br>
+                    <button type="submit">Enviar</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer>
+        © 2026 Gustavo Maia da Silva
+        <br>
+        <a href="mailto:gustavomaia957@gmail.com">Me mande um e-mail</a>
+    </footer>
+</body>
 </html>
