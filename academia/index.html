@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>Academia Movimente-se</h1>
+        <header>
+            <p>Bem vindo a Academia Movimente-se</p>
+        </header>
+        <p>Preencha o formulário de matrícula on-line</p>
+
+        <form action="#" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <br>
+            <label for="CPF">CPF:</label>
+            <input type="text" id="CPF" name="CPF" pattern="[0-9]{11}" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="dataNascimento">Data de nascimento:</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" required>
+            <br>
+            <label for="peso">Peso em kg:</label>
+            <input type="number" id="peso" name="peso" step="0.1" min="0.1" required>
+            <br>
+            <p>Escolha do plano:</p>
+            <input type="radio" id="mensal" name="plano" value="mensal" required>
+            <label for="mensal">Mensal</label>
+            <br>
+            <input type="radio" id="trimestral" name="plano" value="trimestral" required>
+            <label for="trimestral">Trimestral</label>
+            <br>
+            <input type="radio" id="anual" name="plano" value="anual" required>
+            <label for="anual">Anual</label>
+            <br>
+            <p>Modalidades:</p>
+            <input type="checkbox" id="musculacao" name="modalidades" value="musculacao">
+            <label for="musculacao">Musculação</label>
+            <br>
+            <input type="checkbox" id="pilates" name="modalidades" value="pilates">
+            <label for="pilates">Pilates</label>
+            <br>
+            <input type="checkbox" id="spinning" name="modalidades" value="spinning">
+            <label for="spinning">Spinning</label>
+            <br>
+            <input type="checkbox" id="natacao" name="modalidades" value="natacao">
+            <label for="natacao">Natação</label>
+            <br>
+            <label for="horario">Horário preferido:</label>
+            <input type="time" id="horario" name="horario" min="06:00" max="22:00" required>
+            <br>
+            <button type="submit">Enviar matrícula</button>
+        </form>
+       <!-- A validação do HTML pode ser burlada e não garante que os dados sejam reais, por isso também precisamos conferir no servidor. -->
+</html>
