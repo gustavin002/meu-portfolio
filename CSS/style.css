@@ -1,0 +1,146 @@
+/* Paleta de cores:
+#000000 - Fundo: fundo das páginas, cabeçalho e rodapé.
+#FFFFFF - Texto: cor dos textos e do texto do botão.
+#007BFF - Destaque: links, botões, cabeçalhos de tabelas e foco dos campos.
+#808080 - Detalhe: bordas e fundo dos links ao passar o mouse.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: "Geist Pixel", sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: "Jersey 25", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+header, footer {
+    background-color: #000000;
+    color: #FFFFFF;
+    padding: 24px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+a {
+    color: #007BFF;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    color: #007BFF;
+    padding: 8px 12px;
+}
+
+nav a:hover {
+    background-color: #808080;
+    color: #000000;
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #808080;
+    padding: 12px;
+}
+
+th {
+    background-color: #007BFF;
+    color: #000000;
+    font-weight: bold;
+}
+
+fieldset {
+    border: 1px solid #808080;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    background-color: #000000;
+    color: #FFFFFF;
+    border: 1px solid #808080;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 2px solid #007BFF;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #808080;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: #007BFF;
+}
+
+input[type="range"] {
+    accent-color: #007BFF;
+}
+
+button {
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 16px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.destaque {
+    background-color: #000000;
+    color: #FFFFFF;
+    border-left: 4px solid #007BFF;
+    padding: 16px;
+}
+
+p {
+    color: red;
+}
+
+/* Exercício 3.6:
+O parágrafo com a classe .destaque fica vermelho.
+A regra .destaque perde porque o seletor de classe tem
+menor especificidade que o seletor de elemento p,
+mesmo que a regra p apareça depois no arquivo.
+*/
