@@ -9,15 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Jersey+25&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="tema-escuro">
     <header>
         <h1>Gustavo Maia da Silva</h1>
         <h2>Desenvolvedor Web em formação</h2>
-        <nav>
+        <nav class="menu">
             <ul>
                 <li><a href="index.html">Sobre mim</a></li>
                 <li><a href="curriculo.html">Curriculo</a></li>
-                <li><a href="contato.html">Contato</a></li>
+                <li><a href="contato.html" class="ativo" aria-current="page">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -29,33 +29,34 @@
                     <legend>Dados pessoais</legend>
                     <label for="nome_completo">Nome completo:</label>
                     <br>
-                    <input type="text" id="nome_completo" name="nome_completo" minlength="3" required>
+                    <input type="text" id="nome_completo" name="nome_completo" minlength="3" autocomplete="name" required>
                     <br><br>
                     <label for="email">Email:</label>
                     <br>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" autocomplete="email" aria-describedby="erro_email" required>
+                    <small class="mensagem-erro" id="erro_email">Informe um e-mail válido</small>
                     <br><br>
                     <label for="senha">Senha:</label>
                     <br>
-                    <input type="password" id="senha" name="senha" minlength="8" required>
+                    <input type="password" id="senha" name="senha" minlength="8" autocomplete="new-password" required>
                     <br><br>
                     <label for="confirmar_senha">Confirmar senha:</label>
                     <br>
-                    <input type="password" id="confirmar_senha" name="confirmar_senha" minlength="8" required>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" minlength="8" autocomplete="new-password" required>
                     <br><br>
                     <label for="telefone">Telefone:</label>
                     <br>
-                    <input type="tel" id="telefone" name="telefone">
+                    <input type="tel" id="telefone" name="telefone" autocomplete="tel">
                     <br><br>
                     <label for="data_nascimento">Data de nascimento:</label>
                     <br>
-                    <input type="date" id="data_nascimento" name="data_nascimento">
+                    <input type="date" id="data_nascimento" name="data_nascimento" autocomplete="bday">
                 </fieldset>
                 <fieldset>
                     <legend>Endereço</legend>
                     <label for="CEP">CEP:</label>
                     <br>
-                    <input type="text" id="CEP" name="CEP" pattern="[0-9]{8}" placeholder="Somente números" title="Digite exatamente 8 dígitos numéricos, sem pontos ou hífen." required>
+                    <input type="text" id="CEP" name="CEP" pattern="[0-9]{8}" placeholder="Somente números" title="Digite exatamente 8 dígitos numéricos, sem pontos ou hífen." autocomplete="postal-code" required>
                     <br><br>
                     <label for="Rua">Rua:</label>
                     <br>
@@ -67,11 +68,11 @@
                     <br><br>
                     <label for="Cidade">Cidade:</label>
                     <br>
-                    <input type="text" id="Cidade" name="Cidade">
+                    <input type="text" id="Cidade" name="Cidade" autocomplete="address-level2">
                     <br><br>
                     <label for="Estado">Estado:</label>
                     <br>
-                    <select id="Estado" name="Estado">
+                    <select id="Estado" name="Estado" autocomplete="address-level1">
                         <option value="PR" selected>Paraná</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -92,17 +93,18 @@
                         <option value="Full-stack">Full stack</option>
                     </select>
                     <br><br>
-                    <label for="Nível_experiencia">Nível de experiência:</label>
+                    <div role="group" aria-labelledby="titulo_experiencia">
+                        <div id="titulo_experiencia">Nível de experiência:</div>
+                        <input type="radio" id="iniciante" name="Nível_experiencia" value="Iniciante">
+                        <label for="iniciante">Iniciante</label>
+                        <br>
+                        <input type="radio" id="intermediario" name="Nível_experiencia" value="Intermediário">
+                        <label for="intermediario">Intermediário</label>
+                        <br>
+                        <input type="radio" id="avancado" name="Nível_experiencia" value="Avançado">
+                        <label for="avancado">Avançado</label>
+                    </div>
                     <br>
-                    <input type="radio" id="iniciante" name="Nível_experiencia" value="Iniciante">
-                    <label for="iniciante">Iniciante</label>
-                    <br>
-                    <input type="radio" id="intermediario" name="Nível_experiencia" value="Intermediário">
-                    <label for="intermediario">Intermediário</label>
-                    <br>
-                    <input type="radio" id="avancado" name="Nível_experiencia" value="Avançado">
-                    <label for="avancado">Avançado</label>
-                    <br><br>
                     <label for="nota_curso">Nota para o curso:</label>
                     <br>
                     0

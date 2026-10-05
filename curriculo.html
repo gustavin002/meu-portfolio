@@ -9,14 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Pixel&family=Jersey+25&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="tema-escuro">
     <header>
         <h1>Gustavo Maia da Silva</h1>
         <h2>Desenvolvedor Web em formação</h2>
-        <nav>
+        <nav class="menu">
             <ul>
                 <li><a href="index.html">Sobre mim</a></li>
-                <li><a href="curriculo.html">Curriculo</a></li>
+                <li><a href="curriculo.html" class="ativo" aria-current="page">Curriculo</a></li>
                 <li><a href="contato.html">Contato</a></li>
             </ul>
         </nav>
@@ -28,9 +28,9 @@
                 <caption>Minha formação</caption>
                 <thead>
                     <tr>
-                        <th>Curso</th>
-                        <th>Instituição</th>
-                        <th>Ano de conclusão</th>
+                        <th scope="col">Curso</th>
+                        <th scope="col">Instituição</th>
+                        <th scope="col">Ano de conclusão</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,9 +47,10 @@
                 </tbody>
             </table>
         </section>
-        <section>
+        <section class="projetos">
             <h3>Projetos</h3>
             <article>
+                <span class="selo">Novo</span>
                 <h3>Sistema web de rastreamento com verificação de dois fatores</h3>
                 <p>
                     Sistema foi feito para um projeto real
@@ -84,8 +85,8 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Tecnologia</th>
-                        <th>Nível</th>
+                        <th scope="col">Tecnologia</th>
+                        <th scope="col">Nível</th>
                     </tr>
                 </thead>
                 <tbody>

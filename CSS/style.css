@@ -1,9 +1,27 @@
-/* Paleta de cores:
-#000000 - Fundo: fundo das páginas, cabeçalho e rodapé.
-#FFFFFF - Texto: cor dos textos e do texto do botão.
-#007BFF - Destaque: links, botões, cabeçalhos de tabelas e foco dos campos.
-#808080 - Detalhe: bordas e fundo dos links ao passar o mouse.
-*/
+:root {
+    --cor-fundo: #FFFFFF;
+    --cor-texto: #000000;
+    --cor-destaque: #007BFF;
+    --cor-link: #0056B3;
+    --cor-suave: #E5E7EB;
+    --cor-borda: #808080;
+    --cor-placeholder: #595959;
+    --cor-paragrafo: #B91C1C;
+
+    --cor-ok: #2E7D32;
+    --cor-ok-fundo: #E8F5E9;
+    --cor-ok-texto: #1B5E20;
+
+    --cor-alerta: #F9A825;
+    --cor-alerta-fundo: #FFF8E1;
+    --cor-alerta-texto: #6D4C00;
+
+    --cor-erro: #C62828;
+    --cor-erro-fundo: #FFEBEE;
+    --cor-erro-texto: #8E1616;
+
+    --cor-sombra: rgba(0, 0, 0, 0.15);
+}
 
 * {
     box-sizing: border-box;
@@ -11,11 +29,12 @@
 
 body {
     margin: 0;
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     font-family: "Geist Pixel", sans-serif;
     font-size: 1rem;
     line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
 h1, h2, h3 {
@@ -35,112 +54,387 @@ h3 {
     font-size: 1.25rem;
 }
 
+a {
+    color: var(--cor-link);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    color: var(--cor-paragrafo);
+}
+
 header, footer {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     padding: 24px;
 }
 
+header {
+    background: linear-gradient(
+        135deg,
+        var(--cor-fundo),
+        var(--cor-suave)
+    );
+}
+
 main {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 16px;
 }
 
-a {
-    color: #007BFF;
-}
-
-nav ul {
+.menu ul {
+    display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
 }
 
-nav a {
-    display: inline-block;
-    text-decoration: none;
-    color: #007BFF;
-    padding: 8px 12px;
+.menu li:not(:last-child) {
+    border-right: 1px solid var(--cor-borda);
 }
 
-nav a:hover {
-    background-color: #808080;
-    color: #000000;
+.menu a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--cor-link);
     padding: 8px 12px;
     border-radius: 6px;
+    background-color: var(--cor-fundo);
+    transition: background-color 0.3s, color 0.3s, transform 0.25s;
+}
+
+/* Exercício 2.3:
+O link precisa de position: relative para servir de referência
+ao posicionamento do ::after, que usa position: absolute.
+*/
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--cor-destaque);
+    transition: width 0.3s;
+}
+
+.perfil img {
+    width: 160px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.destaque {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    border-left: 4px solid var(--cor-destaque);
+    padding: 16px;
+}
+
+/* Exercício 3.6:
+A regra .destaque ganha porque o seletor de classe tem
+maior especificidade que o seletor de elemento p.
+O parágrafo com essa classe usa a cor de texto do tema.
+Os demais parágrafos usam a variável --cor-paragrafo.
+*/
+
+/* O que cada um faz
+• :first-child: Seleciona um elemento que é o primeiro filho do seu pai.
+    • Exemplo: li:first-child seleciona um li que ocupa essa posição.
+• :nth-child(2): Seleciona um elemento que é o segundo filho do seu pai.
+    • Exemplo: tr:nth-child(2) seleciona um tr que ocupa essa posição.
+    Também é possível usar fórmulas como 2n (pares) ou 2n+1 (ímpares).
+• :not(): Seleciona elementos que não correspondem ao seletor informado.
+    • Exemplo: li:not(:last-child) seleciona os li que não são o último filho.
+*/
+
+.lista-cursos {
+    list-style: none;
+    padding: 0;
+}
+
+.lista-cursos li::before {
+    content: "✓";
+    color: var(--cor-link);
+    margin-right: 8px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 th, td {
-    border: 1px solid #808080;
+    border: 1px solid var(--cor-borda);
     padding: 12px;
 }
 
 th {
-    background-color: #007BFF;
-    color: #000000;
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
     font-weight: bold;
 }
 
-fieldset {
-    border: 1px solid #808080;
+tbody tr:nth-child(even) {
+    background: var(--cor-suave);
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 16px;
-    background-color: #000000;
-    color: #FFFFFF;
-    border: 1px solid #808080;
-    font-family: inherit;
-    font-size: 1rem;
+.projetos article {
+    position: relative;
+    background-color: var(--cor-suave);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 8px var(--cor-sombra);
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 
-input:focus, select:focus, textarea:focus {
-    border: 2px solid #007BFF;
-}
-
-input::placeholder, textarea::placeholder {
-    color: #808080;
-}
-
-input[type="radio"], input[type="checkbox"] {
-    accent-color: #007BFF;
-}
-
-input[type="range"] {
-    accent-color: #007BFF;
+.selo {
+    display: inline-block;
+    padding: 4px 10px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 button {
-    background-color: #007BFF;
-    color: #FFFFFF;
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto);
     border: none;
     padding: 10px 16px;
     font-family: inherit;
     font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.25s, color 0.25s, transform 0.25s;
 }
 
-.destaque {
-    background-color: #000000;
-    color: #FFFFFF;
-    border-left: 4px solid #007BFF;
-    padding: 16px;
+fieldset {
+    border: 1px solid var(--cor-borda);
+    min-width: 0;
 }
 
-p {
-    color: red;
+input, select, textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    margin-bottom: 16px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+    font-family: inherit;
+    font-size: 1rem;
 }
 
-/* Exercício 3.6:
-O parágrafo com a classe .destaque fica vermelho.
-A regra .destaque perde porque o seletor de classe tem
-menor especificidade que o seletor de elemento p,
-mesmo que a regra p apareça depois no arquivo.
+textarea {
+    resize: vertical;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--cor-placeholder);
+    opacity: 1;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    margin-right: 6px;
+    accent-color: var(--cor-destaque);
+}
+
+input[type="range"] {
+    accent-color: var(--cor-destaque);
+}
+
+.mensagem-erro {
+    display: none;
+    color: var(--cor-erro);
+}
+
+.resultado,
+.ok,
+.alerta,
+.erro {
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 6px solid var(--cor-texto);
+    background: var(--cor-suave);
+    color: var(--cor-texto);
+}
+
+.caixa {
+    width: 150px;
+    height: 150px;
+    margin-top: 24px;
+    background-color: var(--cor-destaque);
+    transition: transform 0.3s ease-out;
+}
+
+body.tema-escuro {
+    --cor-fundo: #000000;
+    --cor-texto: #FFFFFF;
+    --cor-destaque: #0056B3;
+    --cor-link: #66B2FF;
+    --cor-suave: #1A1A1A;
+    --cor-borda: #A0A0A0;
+    --cor-placeholder: #BDBDBD;
+    --cor-paragrafo: #FF8080;
+
+    --cor-ok: #81C784;
+    --cor-ok-fundo: #102A18;
+    --cor-ok-texto: #C8E6C9;
+
+    --cor-alerta: #FFD54F;
+    --cor-alerta-fundo: #302600;
+    --cor-alerta-texto: #FFECB3;
+
+    --cor-erro: #FF8A80;
+    --cor-erro-fundo: #351414;
+    --cor-erro-texto: #FFCDD2;
+
+    --cor-sombra: rgba(0, 123, 255, 0.25);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--cor-link);
+    outline-offset: 4px;
+}
+
+.menu a:hover {
+    background-color: var(--cor-suave);
+    color: var(--cor-texto);
+}
+
+.menu a:hover::after,
+.menu a:focus-visible::after,
+.menu a.ativo::after {
+    width: 100%;
+}
+
+.menu a:active {
+    transform: scale(0.95);
+}
+
+.projetos article:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px var(--cor-sombra);
+}
+
+button:hover {
+    background-color: var(--cor-suave);
+    color: var(--cor-texto);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--cor-link);
+}
+
+input.campo-erro {
+    border-color: var(--cor-erro);
+}
+
+.campo-erro + .mensagem-erro {
+    display: block;
+}
+
+.ok {
+    border-color: var(--cor-ok);
+    background: var(--cor-ok-fundo);
+    color: var(--cor-ok-texto);
+}
+
+.alerta {
+    border-color: var(--cor-alerta);
+    background: var(--cor-alerta-fundo);
+    color: var(--cor-alerta-texto);
+}
+
+.erro {
+    border-color: var(--cor-erro);
+    background: var(--cor-erro-fundo);
+    color: var(--cor-erro-texto);
+}
+
+.caixa:hover {
+    transform: rotate(10deg);
+}
+
+/* Exercício 1.2 — resultados esperados:
+Sem transition, a caixa gira e volta de forma brusca.
+Com transition: transform 0.3s na .caixa, o movimento fica suave
+tanto ao passar o mouse quanto ao retirar.
+Com 1s, o movimento fica mais lento.
+ease-in começa devagar e acelera.
+ease-out começa rápido e desacelera.
+linear mantém a velocidade constante.
+O ritmo que parece mais natural deve ser escolhido após o teste.
+Ao segurar o clique, o botão diminui para 95% do tamanho.
+Ao soltar, ele volta ao tamanho original.
 */
+
+@keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sobre {
+    animation: surgir 0.6s ease-out;
+}
+
+@keyframes pulsar {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.selo {
+    animation: pulsar 1.5s infinite;
+}
+
+@media (max-width: 600px) {
+    header, footer {
+        padding: 16px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
